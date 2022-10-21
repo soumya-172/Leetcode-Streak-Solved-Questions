@@ -12,7 +12,7 @@ class Solution {
                 if(Math.abs(map.get(nums[i]) - i) <= k){
                     return true;
                 }else{
-                    // if <=k then update the index with current index
+                    // if not <=k then update the index with current index
                     map.put(nums[i],i);
                 }
             }else{
