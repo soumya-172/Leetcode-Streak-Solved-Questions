@@ -14,6 +14,7 @@ class Solution {
                 
                 npos = cpos + grid[i][cpos];
                 
+                // if we collide with the wall or we get trapped between two alternative diagonal
                 if(npos < 0 || npos >= m || grid[i][cpos] != grid[i][npos]){
                     cpos = -1;
                     break;
