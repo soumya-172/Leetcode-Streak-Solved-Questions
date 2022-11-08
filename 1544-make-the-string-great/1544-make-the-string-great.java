@@ -1,14 +1,27 @@
 class Solution {
     public String makeGood(String s) {
         
-        // this is the recursive iterative solution 
+        // using stack
+        // tc -> o(n), sc -> o(n) i.e. for using stack
         
-        for(int i = 0; i < s.length() - 1; i++){
-            if(Math.abs(s.charAt(i) - s.charAt(i + 1)) == 32){
-                return makeGood(s.substring(0,i) + s.substring(i+2, s.length()));
+        Stack<Character> stack = new Stack();
+        
+        char[] chArr = s.toCharArray();
+        
+        for(char ch : chArr){
+            if(!stack.isEmpty() && Math.abs(stack.peek() - ch) == 32){
+                stack.pop();
+            }else{
+                stack.add(ch);
             }
         }
         
-        return s;
+        StringBuilder sb = new StringBuilder();
+        
+        while(stack.size() > 0){
+            sb.append(stack.pop());
+        }
+        
+        return sb.reverse().toString();
     }
 }
