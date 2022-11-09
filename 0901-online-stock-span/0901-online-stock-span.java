@@ -1,5 +1,7 @@
 class StockSpanner {
     
+    // next gretar element to left same pattern -> in this instead of storing the greater element sotre the index of the greater element and the diff. b/w curr ele index and next greater ele index will be the answer.
+    
     static class Pair{
         int price;
         int index;
