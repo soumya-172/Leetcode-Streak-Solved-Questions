@@ -126,20 +126,29 @@ class BinaryTree
     static ArrayList<Integer> preorder(Node root)
     {
         // Code here
-        ArrayList<Integer> traversal = new ArrayList<>();
+        ArrayList<Integer> preOrder = new ArrayList<>();
         
-        return preOrderTrav(root, traversal);
-    }
-    
-    static ArrayList<Integer> preOrderTrav(Node curr, ArrayList < Integer > preOrder) {
-        if (curr == null)
-            return preOrder;
-
-        preOrder.add(curr.data);
-        preOrderTrav(curr.left, preOrder);
-        preOrderTrav(curr.right, preOrder);
+        if(root == null) return preOrder;
+        
+        Stack<Node> st = new Stack<Node>();
+        st.push(root);
+        
+        while(!st.isEmpty()){
+            root = st.pop();
+            preOrder.add(root.data);
+            
+            if(root.right != null){
+                st.push(root.right);
+            }
+            
+            if(root.left != null){
+                st.push(root.left);
+            }
+        }
         
         return preOrder;
     }
+    
+   
 
 }
