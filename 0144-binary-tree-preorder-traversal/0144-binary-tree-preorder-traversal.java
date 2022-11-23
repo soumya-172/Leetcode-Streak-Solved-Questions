@@ -16,20 +16,29 @@
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         
+        // iterative solution using Stack
         List<Integer> preOrder = new ArrayList<>();
         
-        return preOrderTrav(root, preOrder);
-    }
-    
-    public List<Integer> preOrderTrav(TreeNode curr, List<Integer> preOrder){
-        if(curr == null){
-            return preOrder;
-        }
+        if(root == null) return preOrder;
         
-        preOrder.add(curr.val);
-        preOrderTrav(curr.left, preOrder);
-        preOrderTrav(curr.right, preOrder);
+        Stack<TreeNode> st = new Stack<>();
+        st.push(root);
+        
+        while(!st.isEmpty()){
+            root = st.pop();
+            preOrder.add(root.val);
+            
+            if(root.right != null){
+                st.push(root.right);
+            }
+            
+            if(root.left != null){
+                st.push(root.left);
+            }
+        }
         
         return preOrder;
     }
+    
+   
 }
